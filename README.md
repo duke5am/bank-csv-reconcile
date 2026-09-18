@@ -92,4 +92,4 @@ The paid pack adds eight sample statements covering more bank layouts, the
 for-bookkeepers guide (including how to open a terminal on Windows and Mac), the
 column-mapping and reconciliation guides, and 86 tests.
 
-→ **Bank Statement Normalizer**: <!-- GUMROAD-LINK -->
+→ More developer tooling like this: **[duke5am.gumroad.com](https://duke5am.gumroad.com)** <!-- GUMROAD-LINK -->
