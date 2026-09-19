@@ -91,4 +91,19 @@ The paid pack adds eight sample statements covering more bank layouts, the
 for-bookkeepers guide (including how to open a terminal on Windows and Mac), the
 column-mapping and reconciliation guides, and 86 tests.
 
+<!-- RELATED:START -->
+
+## Related tools
+
+- **[cur-athena-lint](https://github.com/duke5am/cur-athena-lint)** — Lint AWS Cost and Usage Report Athena SQL for partition pruning and column mistakes, with the schema reference and a FinOps playbook.
+  *(if you were searching for "aws cur athena query")*
+- **[ga4-bigquery-lint](https://github.com/duke5am/ga4-bigquery-lint)** — Lint GA4 BigQuery SQL for the session, event_params and cost mistakes that quietly give you wrong numbers, using sqlglot's real BigQuery grammar.
+  *(if you were searching for "ga4 bigquery queries")*
+
+All 28 tools in this set, grouped by what they check: **[dev-tools-index](https://duke5am.github.io/dev-tools-index/)**
+
+If you arrived here searching for one of these, this is the tool: **bank statement csv to excel** · **reconcile bank statement** · **convert bank export to one table** · **ofx qif csv normalise**
+
+<!-- RELATED:END -->
+
 → More developer tooling like this: **[duke5am.gumroad.com](https://duke5am.gumroad.com)** <!-- GUMROAD-LINK -->
