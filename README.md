@@ -1,5 +1,4 @@
-# statement-normalizer
-
+# bank-csv-reconcile
 Turn a bank's CSV or Excel export into **one clean table** — and prove nothing was
 lost while doing it. No dependencies for CSV.
 
