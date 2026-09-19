@@ -106,4 +106,4 @@ If you arrived here searching for one of these, this is the tool: **bank stateme
 
 <!-- RELATED:END -->
 
-→ More developer tooling like this: **[duke5am.gumroad.com](https://duke5am.gumroad.com)** <!-- GUMROAD-LINK -->
+→ **[Bank Statement Normalizer](https://duke5am.gumroad.com/l/31-bank-statement-normalizer)** — $29 on Gumroad <!-- GUMROAD-LINK -->
