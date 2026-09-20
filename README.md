@@ -1,12 +1,141 @@
 # bank-csv-reconcile
+
+[![PyPI](https://img.shields.io/pypi/v/bank-csv-reconcile)](https://pypi.org/project/bank-csv-reconcile/)
+
 Turn a bank's CSV or Excel export into **one clean table** — and prove nothing was
 lost while doing it. No dependencies for CSV.
 
+## Install it (two minutes, no developer tools)
+
+You do not need to download anything from this page. One command fetches the tool
+and puts it on your computer.
+
+**1. Check you have Python.** Open a terminal (Windows: press the Windows key and
+type `cmd`; macOS: press `Cmd`+`Space` and type `Terminal`) and type:
+
 ```bash
+python3 --version
+```
+
+If it answers `Python 3.9` or higher, go to step 2. If it says *command not found*
+or opens the Microsoft Store, install Python first from
+<https://www.python.org/downloads/> — **on Windows, tick "Add python.exe to PATH"
+on the first screen of the installer**, then close the terminal and open a new one.
+
+**2. Install the tool.** Type exactly this:
+
+```bash
+python3 -m pip install bank-csv-reconcile
+```
+
+On Windows the command is usually:
+
+```bash
+py -m pip install bank-csv-reconcile
+```
+
+**3. Run it.** Nothing else to set up — no folders to activate, no environment to
+configure:
+
+```bash
+bank-csv-reconcile statement.csv
+```
+
+The clean table is written next to your statement as
+`statement-normalized.csv` (change that with `--out clean.csv`). Your original
+file is never modified.
+
+```bash
+bank-csv-reconcile statement.csv --out clean.csv
+bank-csv-reconcile statement.csv --date-order dmy     # when dates are ambiguous
+bank-csv-reconcile january.xlsx --json-report january-report.json
+```
+
+### If `pip` is not found
+
+The message is usually *"No module named pip"* or *"pip: command not found"*.
+Python is there, its installer is not. Try these in order:
+
+```bash
+python3 -m ensurepip --upgrade          # Windows: py -m ensurepip --upgrade
+```
+
+If that does not help, install pip the way your system expects, then run step 2
+again:
+
+```bash
+sudo apt install python3-pip            # Debian, Ubuntu, Mint, Raspberry Pi OS
+```
+
+On macOS, `python3 -m ensurepip --upgrade` is enough; if `python3` itself is
+missing, install Python from <https://www.python.org/downloads/>.
+
+### If pip refuses to install it
+
+On newer Debian/Ubuntu systems pip may stop with *"externally-managed-environment"*.
+That is your system protecting its own Python, not a fault in the tool. Either of
+these two ways around it is fine — pick one and change nothing else:
+
+```bash
+sudo apt install pipx && pipx install bank-csv-reconcile
+```
+
+or install it into its own private folder (copy both lines as they are):
+
+```bash
+python3 -m venv ~/.bank-csv-reconcile
+~/.bank-csv-reconcile/bin/pip install bank-csv-reconcile
+```
+
+With the second one the command to run is
+`~/.bank-csv-reconcile/bin/bank-csv-reconcile statement.csv`.
+
+### If `bank-csv-reconcile` is not found after installing
+
+The install worked, but the folder Python puts commands in is not on your `PATH`.
+You can always run the tool this way instead, from any folder:
+
+```bash
+python3 -m bank_csv_reconcile.cli statement.csv
+```
+
+To fix it properly on Windows, re-run the Python installer, choose *Modify*, and
+tick *"Add Python to environment variables"*; on macOS and Linux, add the folder
+that `python3 -m site --user-base` prints, followed by `/bin`, to your `PATH`.
+
+### Excel `.xlsx` files (optional)
+
+CSV files need nothing extra. To read or write `.xlsx` files, add the optional
+Excel support once:
+
+```bash
+python3 -m pip install "bank-csv-reconcile[excel]"
+```
+
+If you forget, the tool says so plainly and tells you this exact command — it
+never produces a wrong answer because of it.
+
+### Check it worked
+
+```bash
+bank-csv-reconcile --version
+```
+
+## Or run it straight from a clone (nothing installed)
+
+If you would rather not install anything, clone the repository and run
+`normalize.py`; it is the same program:
+
+```bash
+git clone https://github.com/duke5am/bank-csv-reconcile.git
+cd bank-csv-reconcile
 python3 normalize.py statement.csv
 python3 normalize.py statement.csv --out clean.csv
 python3 normalize.py statement.csv --date-order dmy      # when dates are ambiguous
 ```
+
+There are four sample statements in `samples/` you can try it on right away, e.g.
+`python3 normalize.py samples/sample3-european-format.csv`.
 
 ## The twenty minutes, every month
 
@@ -97,7 +226,7 @@ column-mapping and reconciliation guides, and 86 tests.
 
 - **[cur-athena-lint](https://github.com/duke5am/cur-athena-lint)** — Lint AWS Cost and Usage Report Athena SQL for partition pruning and column mistakes, with the schema reference and a FinOps playbook.
   *(if you were searching for "aws cur athena query")*
-- **[ga4-bigquery-lint](https://github.com/duke5am/ga4-bigquery-lint)** — Lint GA4 BigQuery SQL for the session, event_params and cost mistakes that quietly give you wrong numbers, using sqlglot's real BigQuery grammar.
+- **[ga4-bigquery-lint](https://github.com/duke5am/ga4-bigquery-lint)** — Lint GA4 BigQuery SQL for the session, event_params and column mistakes that quietly give you wrong numbers, using sqlglot's real BigQuery grammar.
   *(if you were searching for "ga4 bigquery queries")*
 
 All 28 tools in this set, grouped by what they check: **[dev-tools-index](https://duke5am.github.io/dev-tools-index/)**

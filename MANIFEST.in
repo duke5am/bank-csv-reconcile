@@ -1,0 +1,14 @@
+include README.md
+include LICENSE
+include pyproject.toml
+# normalize.py is the thin wrapper the README tells clone users to run
+# (`python3 normalize.py statement.csv`). setuptools does not pick up root-level
+# modules that are not in `packages`/`py_modules`, so without this line the sdist
+# ships a README that documents a file the sdist does not contain.
+include normalize.py
+# The CLI reads no data files of its own at runtime: the CSV it works on is the
+# one named on the command line. samples/ and tests/ are shipped in the sdist so
+# that `python3 -m unittest discover -s tests` works from an unpacked sdist; they
+# are deliberately NOT package data and do not go into the wheel.
+recursive-include samples *.csv
+recursive-include tests *.py

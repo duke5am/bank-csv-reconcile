@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bank-csv-reconcile"
+version = "0.1.0"
+description = "Turn a bank's CSV or Excel statement export into one clean table, and reconcile the running balance to prove no row was lost."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "duke5am" }]
+keywords = [
+  "bank", "statement", "csv", "reconcile", "reconciliation", "bookkeeping",
+  "accounting", "normalize", "bank-statement", "ofx", "qif", "excel",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Office/Business :: Financial :: Accounting",
+  "Topic :: Office/Business :: Financial :: Bookkeeping",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+]
+# The default path (CSV in, CSV out) is pure standard library, so there are no
+# hard requirements. openpyxl is imported only inside read_xlsx_file() and
+# write_xlsx() and is therefore an optional extra, not a dependency.
+dependencies = []
+
+[project.optional-dependencies]
+excel = ["openpyxl>=3.0"]
+
+[project.scripts]
+bank-csv-reconcile = "bank_csv_reconcile.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/duke5am/bank-csv-reconcile"
+Issues = "https://github.com/duke5am/bank-csv-reconcile/issues"
+
+[tool.setuptools]
+packages = ["bank_csv_reconcile"]
+include-package-data = true
